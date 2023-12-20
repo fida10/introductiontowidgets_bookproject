@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:introductiontowidgets_bookproject/basic_screen.dart';
 
+/// The main function is the entry point of the application.
+/// When Dart starts, it calls this function.
 void main() => runApp(const StaticApp());
-//the main function of the app
-//this executes the application
-//we put the main widget in the app (to which all other widgets are connected, basically the base of the tree) here
-//in this case, that is "StaticApp"
 
+/// `StaticApp` is a stateless widget, which describes part of the user interface which can depend on
+/// configuration information in the constructor and ambient state derived from the context but does not
+/// depend on any mutable state.
 class StaticApp extends StatelessWidget {
-  //the root widget of our project, as explained above (since it goes into main)
-  //as with all widgets, it returns a widget
+  /// The constructor takes an optional key argument which is passed to the super class.
   const StaticApp({super.key});
-  //used to get the parent (StatelessWidget) of this widget, specifically the 'key' field for this widget
-  //this key is unique to each widget that calls it and kind of works like an ID card
-  //we (and flutter) uses this to identify the widget
 
+  /// The build method describes the part of the user interface represented by this widget.
   @override
   Widget build(BuildContext context) {
+    /// `MaterialApp` is a convenience widget that wraps a number of widgets that are commonly required for applications implementing Material Design.
+    /// It builds upon a WidgetsApp by adding material-design specific functionality.
     return MaterialApp(
-      //here, we are specifying that our application will use and follow "MaterialApp" specifications
-      //these include built in support for various widgets, navigation, etc.
-      //CupertinoApp also works here if we want to follow apple's standards instead
+      /// The `title` is the application's human-readable title.
       title: 'Chapter Four - Flutter Demo',
+
+      /// The `theme` is the colors, typography, and shapes that define your app's visual design.
       theme: ThemeData(
+        /// The `primarySwatch` is the primary color palette of the app.
         primarySwatch: Colors.amber,
       ),
-      //setting the overall theme of the app
-      //this is not actually displayed directly, but other widgets in this app can use this to have a uniform theme across their layouts
+
+      /// The `home` is the default route of the app (the "/" route), which is the screen displayed when the app is launched with no other route specified.
       home: const BasicScreen(),
-      //the home widget for this application; when the application loads, this is the first page that is displayed
     );
   }
 }

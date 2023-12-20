@@ -1,42 +1,56 @@
-import 'package:flutter/material.dart';
 //import 'package:introductiontowidgets_bookproject/immutable_widget.dart'; //needed for v1 of the scaffold
+
+import 'package:flutter/material.dart';
 import 'package:introductiontowidgets_bookproject/text_layout.dart';
 
+/// `BasicScreen` is a stateless widget, which describes part of the user interface which can depend on
+/// configuration information in the constructor and ambient state derived from the context but does not
+/// depend on any mutable state.
 class BasicScreen extends StatelessWidget {
+  /// The constructor takes an optional key argument which is passed to the super class.
   const BasicScreen({super.key});
 
+  /// The build method describes the part of the user interface represented by this widget.
   @override
   Widget build(BuildContext context) {
+    /// `Scaffold` is a top-level container which provides a framework to implement the basic material design layout structure.
+    /// It provides APIs for showing drawers, snack bars, and bottom sheets.
     return Scaffold(
       /*
-       v1 of scaffold below, with dynamic image
+      // v1 of scaffold, with dynamic image
 
-      //the scaffold widget allows us to format our application better.
-      //It lets us center things, like we are below, and of course it can have children embedded within
-      //Also recommended to use this at the start of every screen, for structure, even if we do not use the fields within Scaffold
-      //Scaffolds form an easy, uniform basis for any screen
-
+      // `AppBar` is a material design app bar which typically appears at the top of the screen and contains a title and an area for actions.
       appBar: AppBar(
-        //this is a common widget called appBar; it lets us insert a nav bar (persistent, doesn't move) at the top of the page
         backgroundColor: Colors.indigo,
         title: const Text('Flutter sample appbar title'),
         actions: const [
+          // `Padding` is a widget that insets its child by the given padding.
+          // In this case, it is used to provide some space around the `Icon` widget.
           Padding(
             padding: EdgeInsets.all(10.0),
-            //looks like this surronds the icon below with a 10 pixel box
             child: Icon(Icons.edit),
           )
         ],
       ),
 
+      // `Column` is a widget that displays its children in a vertical array.
+      // Here, it is used to arrange its children vertically.
       body: Column(
         children: [
+          // `AspectRatio` is a widget that attempts to size the width of the child to a specific aspect ratio.
+          // Here, it is used to provide a 1:1 aspect ratio for the `ImmutableWidget`.
           const AspectRatio(
             aspectRatio: 1.0,
             child: ImmutableWidget(),
           ),
+          // `TextLayout` is a custom widget defined in another file.
+          // It is used here as a child of the `Column` widget.
           const TextLayout(),
+          // `Divider` is a thin horizontal line, with padding on either side.
+          // It is used here to visually separate different parts of the `Column`.
           const Divider(),
+          // `RichText` is a widget that displays text that uses multiple different styles.
+          // Here, it is used to display a text with different styles.
           RichText(
             text: const TextSpan(
               text: 'Flutter text is ',
@@ -65,30 +79,34 @@ class BasicScreen extends StatelessWidget {
         ],
       ),
 
+      // `Drawer` is a material design panel that slides in horizontally from the edge of a `Scaffold` to show navigation links in an application.
       drawer: Drawer(
           child: Container(
               color: Colors.lightBlue,
               child: const Center(
                 child: Text("This is a drawer!"),
               ))),
-      //This is a drawer; basically the hamburger menu we see in a lot of nav bars
-      //adding it also adds a hamburger menu to the nav bar that we created
-      //we can define the elements that should be seen in the hamburgur menu here, inside the drawer widget
-
       // v1 of scaffold ends
-
       */
 
       // v2 of scaffold, with image
 
+      // `Column` is a widget that displays its children in a vertical array.
+      // Here, it is used to arrange its children vertically.
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // `Semantics` is a widget that annotates the widget tree with a description of the meaning of the widgets.
+          // Here, it is used to provide a semantic label for the `Image.asset` widget.
           Semantics(
             image: true,
             label: 'A generated dart logo',
+            // `Image.asset` is a widget that displays an image stored as an asset in the app bundle.
+            // Here, it is used to display an image from the app's assets.
             child: Image.asset('assets/dart.jpg'),
           ),
+          // `TextLayout` is a custom widget defined in another file.
+          // It is used here as a child of the `Column` widget.
           const TextLayout(),
         ],
       ),
